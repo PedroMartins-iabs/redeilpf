@@ -1,0 +1,118 @@
+{% extends "04_usuario/base/cadastro_form_base.html" %}
+{% load static %}
+
+{% block title %}Advanced Form Elements{% endblock title %}
+
+{% block css_specific_page %}
+    <!-- Colorpicker Css -->
+    <link href="{% static "plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" %}" rel="stylesheet" />
+    <!-- Dropzone Css -->
+    <link href="{% static "plugins/dropzone/dropzone.css" %}" rel="stylesheet">
+    <!-- Multi Select Css -->
+    <link href="{% static "plugins/multi-select/css/multi-select.css" %}" rel="stylesheet">
+    <!-- Bootstrap Spinner Css -->
+    <link href="{% static "plugins/jquery-spinner/css/bootstrap-spinner.css" %}" rel="stylesheet">
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" %}" rel="stylesheet">
+    <!-- Bootstrap Select Css -->
+    <link href="{% static "plugins/bootstrap-select/css/bootstrap-select.css" %}" rel="stylesheet" />
+    <!-- noUISlider Css -->
+    <link href="{% static "plugins/nouislider/nouislider.min.css" %}" rel="stylesheet" />
+{% endblock css_specific_page %}
+
+{% block contente_tab_form %}
+
+<!-- Input -->
+<div class="row clearfix" style="margin-top: 25px">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row clearfix">
+                <div class="col-sm-8">
+                    <label for="###">Nome do Banco</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.banco_nome }}
+                            <strong style="color: red;">{{ form.errors.banco_nome }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Número do Banco</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.banco_numero }}
+                            <strong style="color: red;">{{ form.errors.banco_numero }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <label for="###">Agência</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.agencia }}
+                            <strong style="color: red;">{{ form.errors.agencia }}</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <label for="###">Número da Conta</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.conta_corrente }}
+                            <strong style="color: red;">{{ form.errors.conta_corrente }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Operação</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.operacao }}
+                            <strong style="color: red;">{{ form.errors.operacao }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix" >
+                <button type="submit" class="btn btn-success col-sm-12" >SALVAR</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- #END# Input -->
+
+
+
+{% endblock contente_tab_form %}
+
+{% block js_specific_page %}
+    <!-- Bootstrap Colorpicker Js -->
+    <script src="{% static "plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" %}"></script>
+    <!-- Dropzone Plugin Js -->
+    <script src="{% static "plugins/dropzone/dropzone.js" %}"></script>
+    <!-- Input Mask Plugin Js -->
+    <script src="{% static "plugins/jquery-inputmask/jquery.inputmask.bundle.js" %}"></script>
+    <!-- Multi Select Plugin Js -->
+    <script src="{% static "plugins/multi-select/js/jquery.multi-select.js" %}"></script>
+    <!-- Jquery Spinner Plugin Js -->
+    <script src="{% static "plugins/jquery-spinner/js/jquery.spinner.js" %}"></script>
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js" %}"></script>
+    <!-- noUISlider Plugin Js -->
+    <script src="{% static "plugins/nouislider/nouislider.js" %}"></script>
+{% endblock js_specific_page %}
+
+{% block js_custom %}
+    <!-- Custom Js -->
+    <script src="{% static "js/chapeudepalha/cadastro/usuario.js" %}"></script>
+{% endblock js_custom %}
+
+{% block js_additional %}
+    <script>
+        activeItemMenu('usuario-cadastro')
+    </script>
+{% endblock js_additional %}

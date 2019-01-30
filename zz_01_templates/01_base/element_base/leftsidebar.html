@@ -1,0 +1,122 @@
+{% load static %}
+
+<aside id="leftsidebar" class="sidebar">
+    <!-- User Info -->
+    <div class="user-info">
+        <div class="image">
+            <img src="{% static "images/user.png" %}" width="48" height="48" alt="User" />
+        </div>
+        <div class="info-container">
+            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user.first_name }}</div>
+            <div class="email">{{ request.user.email }}</div>
+            <div class="btn-group user-helper-dropdown">
+                <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="javascript:void(0);"><i class="material-icons">person</i>Perfil</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/accounts/logout"><i class="material-icons">input</i>Sair</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- #User Info -->
+    <!-- Menu -->
+    <div class="menu" id="menu">
+        <ul class="list">
+            <li class="header">NAVEGAÇÃO PRINCIPAL</li>
+            <li class="home">
+                <a href="/">
+                    <i class="material-icons">home</i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">account_balance_wallet</i>
+                    <span>Fluxo de Caixa</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="fluxo-caixa-geral">
+                        <a href="/fluxo_caixa/geral">
+                            <span>Geral</span>
+                        </a>
+                    </li>
+                    <!--<li class="fluxo-caixa-detalhada">-->
+                        <!--<a href="#">-->
+                            <!--<span>Detalhada</span>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <li class="fluxo-caixa-projeto">
+                        <a href="#">
+                            <span>Projeto</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">file_copy</i>
+                    <span>Projetos</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="projetos-geral">
+                        <a href="/projetos/geral">
+                            <span>Gerenciamento</span>
+                        </a>
+                    </li>
+                    <li class="projetos-novo">
+                        <a href="#">
+                            <span>Novo</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="active">
+                <!--<a href="javascript:void(0);" class="menu-toggle">-->
+                <a href="#">
+                    <i class="material-icons">assessment</i>
+                    <span>Relatórios</span>
+                </a>
+                <!--<ul class="ml-menu">-->
+                    <!--<li class="usuario-cadastro">-->
+                        <!--<a href="/usuario">-->
+                            <!--<span>Novo</span>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="usuario-cadastro">-->
+                        <!--<a href="/usuario">-->
+                            <!--<span>Listagem</span>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            </li>
+            <li class="active">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">account_circle</i>
+                    <span>Usuários</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="usuario-cadastro">
+                        <a href="#">
+                            <span>Novo</span>
+                        </a>
+                    </li>
+                    <li class="usuario-cadastro">
+                        <a href="#">
+                            <span>Listagem</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <!-- #Menu -->
+    <!-- Footer -->
+    <div class="legal">
+        <div class="copyright">
+            &copy; 2018 <a href="javascript:void(0);">IABS - Rede ILPF</a>.
+        </div>
+    </div>
+    <!-- #Footer -->
+</aside>

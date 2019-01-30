@@ -1,0 +1,596 @@
+{% extends "03_participante/base/cadastro_form_base.html" %}
+{% load static %}
+
+{% block contente_tab_form %}
+
+{% if form.errors %}
+<div class="row clearfix jsdemo-notification-button" style="display: none;">
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <button type="button" class="btn btn-primary btn-block waves-effect" data-placement-from="top"
+                id="btn-error-alert" data-placement-align="center" data-animate-enter="animated bounceInUp"
+                data-animate-exit="animated bounceOutUp" data-color-name="alert-warning">
+            TOP CENTER
+        </button>
+    </div>
+</div>
+{% endif %}
+<!-- Input -->
+<div class="row clearfix">
+{#    <div>{{ form.errors }}</div>#}
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 demo-masked-input">
+
+        <form id="sign_in" method="POST">
+            {% csrf_token %}
+
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="topic-form">INFORMAÇÕES DO PARTICIPANTE</div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-3">
+                    <label for="###">NIS/PIS</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.nis }}
+                            <strong style="color: red;">{{ form.errors.nis }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">CPF</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.cpf }}
+                            <strong style="color: red;">{{ form.errors.cpf }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Carteira de Identidade - nº</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.rg }}
+                            <strong style="color: red;">{{ form.errors.rg }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <label for="###">Órgão Expeditor</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.rg_orgao_exp }}
+                            <strong style="color: red;">{{ form.errors.rg_orgao_exp }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <label for="###">UF</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.rg_uf }}
+                            <strong style="color: red;">{{ form.errors.rg_uf }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <label for="###">Nome do Participante</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.nome_participante }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-6">
+                    <label for="###">Nome da Mãe</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.nome_mae }}
+                            <strong style="color: red;">{{ form.errors.nome_mae }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="###">Nome do Pai</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.nome_pai }}
+                            <strong style="color: red;">{{ form.errors.nome_pai }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-3">
+                    <label for="###">Data de Nascimento</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.data_nascimento }}
+                            <strong style="color: red;">{{ form.errors.data_nascimento }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label for="###">Sexo</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <div class="demo-radio-button ">
+                            {% for radio in form.sexo %}
+                                {{ radio.tag }}
+                                <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                            {% endfor %}
+                            {{ form.errors.sexo }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Estado Civil</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.estado_civil }}
+                            <strong style="color: red;">{{ form.errors.estado_civil }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-6">
+                    <label for="###">Naturalidade</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.municipio_naturalidade }}
+                            <strong style="color: red;">{{ form.errors.municipio_naturalidade }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="###">UF</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.uf }}
+                            <strong style="color: red;">{{ form.errors.uf }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-3">
+                    <label for="###">Título de Eleitor</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.titulo_eleitor }}
+                            <strong style="color: red;">{{ form.errors.titulo_eleitor }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Carteira de Trabalho</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.ctps }}
+                            <strong style="color: red;">{{ form.errors.ctps }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Série</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.ctps_serie }}
+                            <strong style="color: red;">{{ form.errors.ctps_serie }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">UF</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.ctps_uf }}
+                            <strong style="color: red;">{{ form.errors.ctps_uf }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-7">
+                    <label for="###">Tipo de Numeração</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <div class="demo-radio-button ">
+                            {% for radio_tipo in form.tipo_documento_empregador %}
+                                {{ radio_tipo.tag }}
+                                <label for="{{ radio_tipo.id_for_label }}">{{ radio_tipo.choice_label }}</label>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label for="###">CNPJ/CEI/CPF do último empregador</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.cnpj_ultimo_empregador }}
+                            <strong style="color: red;">{{ form.errors.cnpj_ultimo_empregador }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <label for="###">Nome da Empresa (Razão Social)</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.nome_empresa }}
+                            <strong style="color: red;">{{ form.errors.nome_empresa }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-6">
+                    <label for="###">Função</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.funcao }}
+                            <strong style="color: red;">{{ form.errors.funcao }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Data de Entrada</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.data_entrada }}
+                            <strong style="color: red;">{{ form.errors.data_entrada }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Data de Saída</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.data_saida }}
+                            <strong style="color: red;">{{ form.errors.data_saida }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <strong>Quantidade de filhos por faixa etária:</strong>
+                </div>
+                <div class="col-sm-2">
+                    <label for="###">De 0 a 6 meses</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.qtd_filhos_0_6meses }}
+                            <strong style="color: red;">{{ form.errors.qtd_filhos_0_6meses }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <label for="###">De 7 meses a 3 anos</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.qtd_filhos_7meses_3anos }}
+                            <strong style="color: red;">{{ form.errors.qtd_filhos_7meses_3anos }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <label for="###">De 4 a 7 anos</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.qtd_fiilhos_4_7anos }}
+                            <strong style="color: red;">{{ form.errors.qtd_fiilhos_4_7anos }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <label for="###">De 8 a 12 anos</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.qtd_filhos_8_12anos }}
+                            <strong style="color: red;">{{ form.errors.qtd_filhos_8_12anos }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <label for="###">De 13 a 17 anos</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.qtd_filhos_13_17anos }}
+                            <strong style="color: red;">{{ form.errors.qtd_filhos_13_17anos }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <label for="###">De 18 a 29 anos</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.qtd_filhos_18_29anos }}
+                            <strong style="color: red;">{{ form.errors.qtd_filhos_18_29anos }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-3">
+                    <label for="###">Há gestante na família ?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <div class="demo-radio-button ">
+                                {{ form.existe_gestante_familia }}
+                                <label for="id_existe_gestante_familia">Sim, existe gestante.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">É alfabetizado ?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <div class="demo-radio-button ">
+                                <div class="demo-checkbox">
+                                    {{ form.alfabetizado }}
+                                    <label for="id_alfabetizado">Sim, sou alfabetizado.</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Esta estudando ?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.estaestudando }}
+                            <label for="id_estaestudando">Sim, estou estudando.</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Turno da atividade escolar</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.turno_atividade_escolar }}
+                            <strong style="color: red;">{{ form.errors.turno_atividade_escolar }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <label for="###">Grau de escolaridade</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.grau_escolaridade }}
+                            <strong style="color: red;">{{ form.errors.grau_escolaridade }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Raça</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.raca }}
+                            <strong style="color: red;">{{ form.errors.raca }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Possui alguma deficiência</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.portador_dedeficiencia }}
+                            <strong style="color: red;">{{ form.errors.portador_dedeficiencia }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="topic-form">ENDEREÇO DO PARTICIPANTE</div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-9">
+                    <label for="###">Logradouro</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.logradouro }}
+                            <strong style="color: red;">{{ form.errors.logradouro }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Numero</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.numero }}
+                            <strong style="color: red;">{{ form.errors.numero }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <label for="###">Complemento</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.complemento }}
+                            <strong style="color: red;">{{ form.errors.complemento }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-8">
+                    <label for="###">Bairro</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.bairro }}
+                            <strong style="color: red;">{{ form.errors.bairro }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">CEP</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.cep }}
+                            <strong style="color: red;">{{ form.errors.cep }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <label for="###">Telefone Celular</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.celular }}
+                            <strong style="color: red;">{{ form.errors.celular }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Telefone</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.fone }}
+                            <strong style="color: red;">{{ form.errors.fone }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Data Comprovante de residêndia</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.data_comprovante_residencia }}
+                            <strong style="color: red;">{{ form.errors.data_comprovante_residencia }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-3">
+                    <label for="###">Renda mensal familiar</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.renda_mensal_familia }}
+                            <strong style="color: red;">{{ form.errors.renda_mensal_familia }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Nº de pessoas que moram na casa</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.qtd_pessoas_na_casa }}
+                            <strong style="color: red;">{{ form.errors.qtd_pessoas_na_casa }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label for="###">Nº de pessoas que contribuem para renda mensal</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.qtd_pessoa_contribuem_renda }}
+                            <strong style="color: red;">{{ form.errors.qtd_pessoa_contribuem_renda }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <label for="###">Recebe seguro desemprego ?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.recebe_segurodesemprego }}
+                            <label for="id_recebe_segurodesemprego">SIM</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Recebe aposentadoria ?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.recebeaposentadoria }}
+                            <label for="id_recebeaposentadoria">SIM</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Recebe pensão ?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.pensionista }}
+                            <label for="id_pensionista">SIM</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-6">
+                    <label for="###">Você possui MEI ?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.possui_mei }}
+                            <label for="id_possui_mei">SIM</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="###">Algum parente possui MEI ?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.parente_possui_mei }}
+                            <label for="id_parente_possui_mei">SIM</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button type="submit" class="btn btn-primary waves-effect btn-block">
+                        SALVAR INFORMAÇÃO DO PARTICIPANTE
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+<!-- #END# Input -->
+
+
+
+{% endblock contente_tab_form %}
+

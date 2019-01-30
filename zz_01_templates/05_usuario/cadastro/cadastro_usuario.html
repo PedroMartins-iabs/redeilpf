@@ -1,0 +1,121 @@
+{% extends "04_usuario/base/informacoes_form_base.html" %}
+{% load static %}
+
+{% block title %}Advanced Form Elements{% endblock title %}
+
+{% block css_specific_page %}
+    <!-- Colorpicker Css -->
+    <link href="{% static "plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" %}" rel="stylesheet" />
+    <!-- Dropzone Css -->
+    <link href="{% static "plugins/dropzone/dropzone.css" %}" rel="stylesheet">
+    <!-- Multi Select Css -->
+    <link href="{% static "plugins/multi-select/css/multi-select.css" %}" rel="stylesheet">
+    <!-- Bootstrap Spinner Css -->
+    <link href="{% static "plugins/jquery-spinner/css/bootstrap-spinner.css" %}" rel="stylesheet">
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" %}" rel="stylesheet">
+    <!-- Bootstrap Select Css -->
+    <link href="{% static "plugins/bootstrap-select/css/bootstrap-select.css" %}" rel="stylesheet" />
+    <!-- noUISlider Css -->
+    <link href="{% static "plugins/nouislider/nouislider.min.css" %}" rel="stylesheet" />
+{% endblock css_specific_page %}
+
+{% block contente_tab_form %}
+
+<!-- Input -->
+<div class="row clearfix" style="margin-top: 25px">
+    <form method="POST" >
+        {% csrf_token %}
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row clearfix">
+                {{ form.errors }}
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row clearfix">
+                <div class="col-sm-6">
+                    <label for="###">Primeiro nome</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.first_name }}
+                            <strong style="color: red;">{{ form.first_name.errors }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="###">Sobrenome</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.last_name }}
+                            <strong style="color: red;">{{ form.last_name.errors }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-6">
+                    <label for="###">CPF</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.username }}
+                            <strong style="color: red;">{{ form.errors.email }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Senha</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.password }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Digite a senha novamente</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input id="id_password_repeat" type="password" class="form-control" placeholder="Digite novamente a senha" value="chapeu2019"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix" >
+                <button type="submit" class="btn btn-success col-sm-12 js-submit" >CONTINUAR</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+<!-- #END# Input -->
+
+
+
+{% endblock contente_tab_form %}
+
+{% block js_specific_page %}
+    <!-- Bootstrap Colorpicker Js -->
+    <script src="{% static "plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" %}"></script>
+    <!-- Dropzone Plugin Js -->
+    <script src="{% static "plugins/dropzone/dropzone.js" %}"></script>
+    <!-- Input Mask Plugin Js -->
+    <script src="{% static "plugins/jquery-inputmask/jquery.inputmask.bundle.js" %}"></script>
+    <!-- Multi Select Plugin Js -->
+    <script src="{% static "plugins/multi-select/js/jquery.multi-select.js" %}"></script>
+    <!-- Jquery Spinner Plugin Js -->
+    <script src="{% static "plugins/jquery-spinner/js/jquery.spinner.js" %}"></script>
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js" %}"></script>
+    <!-- noUISlider Plugin Js -->
+    <script src="{% static "plugins/nouislider/nouislider.js" %}"></script>
+{% endblock js_specific_page %}
+
+{% block js_custom %}
+    <!-- Custom Js -->
+    <script src="{% static "js/chapeudepalha/cadastro/usuario.js" %}"></script>
+{% endblock js_custom %}
+
+{% block js_additional %}
+    <script>
+        activeItemMenu('usuario-cadastro')
+    </script>
+{% endblock js_additional %}

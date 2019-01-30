@@ -1,0 +1,27 @@
+{% extends "03_participante/base/cadastro_form_base.html" %}
+{% load static %}
+
+{% block contente_tab_form %}
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row clearfix" style="margin-top: 25px">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="">
+                    Deseja Confirmar que o participante não tem Representante legal? <br><br>
+                </div>
+
+                <div class="col-sm-12">
+                    <input type="submit" class="btn btn-danger" value="CONFIRMAR">
+                    <button type="button" class="btn" style="text-decoration: none">
+                        <a href="/participante/cadastro/formulario/{{ id_formulario }}/representante_legal" >
+                            CANCELAR
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock contente_tab_form %}

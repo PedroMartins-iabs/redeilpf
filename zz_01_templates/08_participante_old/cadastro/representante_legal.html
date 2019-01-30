@@ -1,0 +1,70 @@
+{% extends "03_participante/base/cadastro_form_base.html" %}
+{% load static %}
+
+{% block contente_tab_form %}
+
+{{ form.errors }}
+<form method="post">
+    {% csrf_token %}
+
+    <div class="row clearfix" style="margin-top: 25px">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <label for="###">NIS/PIS</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.nis }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">CPF</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.cpf }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Data de Nascimento</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.data_nascimento }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <label for="###">Nome do Representante Legal (Deve ser alguém do sexo feminino)</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.nome_representante }}
+    {#                        <input type="text" class="form-control" placeholder="" />#}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <input type="submit" class="btn btn-primary" value="SALVAR" >
+                    <a href="/participante/cadastro/formulario/{{ id_formulario }}/representante_legal_del">
+                        <input type="button" class="btn btn-warning" value="NÃO POSSUI REPRESENTANTE LEGAL" >
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+{% endblock contente_tab_form %}
+
+{% block js_specific_page %}
+    <!-- Input Mask Plugin Js -->
+    <script src="{% static "plugins/jquery-inputmask/jquery.inputmask.bundle.js" %}"></script>
+
+{% endblock js_specific_page %}
+
+{% block js_custom %}
+    <!-- Custom Js -->
+    <script src="{% static "js/chapeudepalha/cadastro/representante_legal.js" %}"></script>
+{% endblock js_custom %}

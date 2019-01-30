@@ -1,0 +1,234 @@
+{% extends "03_participante/base/cadastro_form_base.html" %}
+{% load static %}
+
+{% block contente_tab_form %}
+
+{{ form.errors }}
+<form method="post">
+    {% csrf_token %}
+    <div class="row clearfix" style="margin-top: 25px">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row clearfix">
+                <div class="col-sm-6">
+                    <label for="###">Apresentou cópia do CPF</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.apresentou_copia_cpf }}
+                            <label for="id_apresentou_copia_cpf">SIM</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="###">Apresentou cópia do Endereço</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.apresentou_copia_endereco }}
+                            <label for="id_apresentou_copia_endereco">SIM</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <label for="###">CPF</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.cpf }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Data de Nascimento</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.data_nascimento }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Sexo</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.sexo }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <label for="###">Nome do Indicado</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.nome_indicado }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <label for="###">Grau de parentesco</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.grau_parentesco }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">É Alfabetizado?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.alfabetizado }}
+                            <label for="id_alfabetizado">SIM</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Está estudando?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.esta_estudando }}
+                            <label for="id_esta_estudando">SIM</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-3">
+                    <label for="###">Turno da atividade escolar</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.turno_atividade_escolar }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Grau de escolaridade</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.grau_escolaridade }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Raça</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.raca }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="###">Possui algum tipo de deficiência?</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.portador_deficiencia }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-10">
+                    <label for="###">Logradouro</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.logradouro }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <label for="###">Número</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.numero }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <label for="###">Complemento</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.complemento }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Bairro</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.bairro }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">CEP</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.cep }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <label for="###">Celular</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.celular }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Telefone</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.telefone }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="###">Data do comprovante de residência</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form.data_comprovante_residencia }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <input type="submit" class="btn btn-primary" value="SALVAR" >
+                    <a href="/participante/cadastro/formulario/{{ id_formulario }}/indicado_del">
+                        <input type="button" class="btn btn-warning" value="NÃO POSSUI INDICADO" >
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+{% endblock contente_tab_form %}
+
+
+{% block js_specific_page %}
+    <!-- Input Mask Plugin Js -->
+    <script src="{% static "plugins/jquery-inputmask/jquery.inputmask.bundle.js" %}"></script>
+
+{% endblock js_specific_page %}
+
+{% block js_custom %}
+    <!-- Custom Js -->
+    <script src="{% static "js/chapeudepalha/cadastro/indicado.js" %}"></script>
+{% endblock js_custom %}
+
+

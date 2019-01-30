@@ -1,0 +1,122 @@
+{% extends "01_base/base.html" %}
+{% load static %}
+
+{% block title %}Advanced Form Elements{% endblock title %}
+
+{% block css_specific_page %}
+    <!-- Colorpicker Css -->
+    <link href="{% static "plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" %}" rel="stylesheet" />
+    <!-- Dropzone Css -->
+    <link href="{% static "plugins/dropzone/dropzone.css" %}" rel="stylesheet">
+    <!-- Multi Select Css -->
+    <link href="{% static "plugins/multi-select/css/multi-select.css" %}" rel="stylesheet">
+    <!-- Bootstrap Spinner Css -->
+    <link href="{% static "plugins/jquery-spinner/css/bootstrap-spinner.css" %}" rel="stylesheet">
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" %}" rel="stylesheet">
+    <!-- Bootstrap Select Css -->
+    <link href="{% static "plugins/bootstrap-select/css/bootstrap-select.css" %}" rel="stylesheet" />
+    <!-- noUISlider Css -->
+    <link href="{% static "plugins/nouislider/nouislider.min.css" %}" rel="stylesheet" />
+{% endblock css_specific_page %}
+
+{% block content %}
+
+<div class="block-header">
+    <h2>IDENTIFICAÇÃO DO PARTICIPANTE</h2>
+</div>
+
+
+<div class="button-demo js-modal-buttons" style="display: none;">
+    <button type="button" data-color="cyan" class="btn bg-cyan waves-effect" id="btn-info-js">CYAN</button>
+</div>
+
+{% if form.errors.nis %}
+<div class="row clearfix jsdemo-notification-button" style="display: none;">
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+        <button type="button" class="btn bg-orange btn-block waves-effect" data-placement-from="bottom"
+                data-placement-align="center" {% if form.errors.nis %}id="btn-info-error-form-js"{% endif %}
+                data-animate-enter="animated flipInY" data-animate-exit="animated flipOutY" data-color-name="bg-red">
+            errorform
+        </button>
+    </div>
+</div>
+{% endif %}
+
+<!-- For Material Design Colors -->
+<div class="modal fade" id="mdModal" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="demo-masked-input">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h4 class="modal-title text-center" id="defaultModalLabel">
+                            IDENTIFICAÇÃO DO PARTICIPANTE
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row clearfix">
+                            <div class="col-md-12">
+                                <b>CPF</b>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">vpn_key</i>
+                                    </span>
+                                    <div class="form-line">{{ form.cpf }}</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <b>NIS</b>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">credit_card</i>
+                                    </span>
+                                    <div class="form-line">{{ form.nis }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">BUSCAR</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js_specific_page %}
+    <!-- Bootstrap Colorpicker Js -->
+    <script src="{% static "plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" %}"></script>
+    <!-- Dropzone Plugin Js -->
+    <script src="{% static "plugins/dropzone/dropzone.js" %}"></script>
+    <!-- Input Mask Plugin Js -->
+    <script src="{% static "plugins/jquery-inputmask/jquery.inputmask.bundle.js" %}"></script>
+    <!-- Multi Select Plugin Js -->
+    <script src="{% static "plugins/multi-select/js/jquery.multi-select.js" %}"></script>
+    <!-- Jquery Spinner Plugin Js -->
+    <script src="{% static "plugins/jquery-spinner/js/jquery.spinner.js" %}"></script>
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js" %}"></script>
+    <!-- noUISlider Plugin Js -->
+    <script src="{% static "plugins/nouislider/nouislider.js" %}"></script>
+{% endblock js_specific_page %}
+
+{% block js_custom %}
+    <!-- Custom Js -->
+    <script src="{% static "js/pages/ui/modals.js" %}"></script>
+    <script src="{% static "js/pages/ui/notifications_cadastro.js" %}"></script>
+    <script src="{% static "js/pages/forms/advanced-form-elements.js" %}"></script>
+{% endblock js_custom %}
+
+{% block js_additional %}
+    <script>
+        activeItemMenu('participante-cadastro');
+        autoClickModal();
+        autoClickErroForm();
+    </script>
+{% endblock js_additional %}

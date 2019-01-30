@@ -1,0 +1,239 @@
+{% extends "01_base/base.html" %}
+{% load static %}
+
+{% block title %}CADASTRO{% endblock title %}
+
+{% block css_specific_page %}
+    <!-- Colorpicker Css -->
+    <link href="{% static "plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" %}" rel="stylesheet" />
+    <!-- Dropzone Css -->
+    <link href="{% static "plugins/dropzone/dropzone.css" %}" rel="stylesheet">
+    <!-- Multi Select Css -->
+    <link href="{% static "plugins/multi-select/css/multi-select.css" %}" rel="stylesheet">
+    <!-- Bootstrap Spinner Css -->
+    <link href="{% static "plugins/jquery-spinner/css/bootstrap-spinner.css" %}" rel="stylesheet">
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" %}" rel="stylesheet">
+    <!-- Bootstrap Select Css -->
+    <link href="{% static "plugins/bootstrap-select/css/bootstrap-select.css" %}" rel="stylesheet" />
+    <!-- noUISlider Css -->
+    <link href="{% static "plugins/nouislider/nouislider.min.css" %}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{% static 'css/chapeudepalha/bootstrap-select.min.css' %}">
+
+
+    <!-- Custom for page Css -->
+    <link href="{% static "css/chapeudepalha/indicado.css" %}" rel="stylesheet" />
+{% endblock css_specific_page %}
+
+{% block content %}
+
+
+<div class="block-header text-center">
+    <h2>FORMULARIO DE CADASTRO</h2>
+</div>
+
+<!-- Tabs With Custom Animations -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                {#<h2>- - - HEAD DO FORMULARIO - - -</h2>#}
+                <div class="row clearfix">
+                    <div class="col-md-1">
+                        <div class="row clearfix">
+                            <div class="col-md-12">
+                                <input type="checkbox" name="copia_nis" id="copia_nis" class="chk-col-orange"
+                                       {% if capia_nis %}checked="" disabled{% endif %} required>
+                                <label for="copia_nis">NIS</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="checkbox" name="copia_cpf" id="copia_cpf" class="chk-col-orange"
+                                       {% if capia_cpf %}checked="" disabled{% endif %} required>
+                                <label for="copia_cpf">CPF</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="checkbox" name="copia_rg" id="copia_rg" class="chk-col-orange"
+                                       {% if capia_rg %}checked="" disabled{% endif %} required>
+                                <label for="copia_rg">RG</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="row clearfix">
+                            <div class="col-md-12">
+                                <input type="checkbox" name="copia_contrato_trabalho" id="copia_contrato_trabalho" class="chk-col-orange"
+                                       {% if capia_contrato_trab %}checked="" disabled{% endif %} required>
+                                <label for="copia_contrato_trabalho">CONTRATO DE TRABALHO</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="checkbox" name="copia_carteira_trabalho" id="copia_carteira_trabalho" class="chk-col-orange"
+                                       {% if capia_ctps %}checked="" disabled{% endif %} required>
+                                <label for="copia_carteira_trabalho">CARTEIRA DE TRABALHO</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="checkbox" name="copia_endereco" id="copia_endereco" class="chk-col-orange"
+                                       {% if capia_endereco %}checked="" disabled{% endif %} required>
+                                <label for="copia_endereco">COPIA DO ENDERECO</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="row clearfix">
+                            <div class="col-md-12">
+                                <input type="checkbox" name="copia_curso" id="copia_curso" class="chk-col-orange"
+                                       {% if capia_certificado_curso %}checked="" disabled{% endif %}>
+                                <label for="copia_curso">CERTIFICADO DE CURSO</label>
+                            </div>
+
+                            <div class="col-md-12">
+                                <button type="button" class="btn bg-orange btn-block waves-effect" data-toggle="modal"
+                                        data-target="#largeModal">
+                                    <i class="material-icons">save</i>
+                                    <span>DOCUMENTOS</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-offset-2 col-md-3">
+                        <button type="button" class="btn bg-blue btn-block waves-effect"
+                                {% if not task_inf and not task_rep and not task_ind and not task_loc %}
+                                disabled
+                                {% endif %}
+                                style="height: 85px;">
+                            <i class="material-icons">verified_user</i>
+                            <span>SALVAR FORMULARIO</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body">
+                <div class="row clearfix">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                            <li role="presentation" class="{% if tab_active == 'InformationParticipant'%}active{% endif %}">
+                                <a href="{{ url_information }}">
+                                    {% if task_inf %}
+                                    <i class="material-icons" style="color: green;">done</i>
+                                    {% else %}
+                                    <i class="material-icons" style="color: red;">account_box</i>
+                                    {% endif %}
+                                    INFORMAÇÕES
+                                </a>
+                            </li>
+                            <li role="presentation" class="{% if tab_active == 'LegalRepresentative'%}active{% endif %}">
+                                <a href="{{ url_legalrepresentative }}" >
+                                    {% if task_rep %}
+                                    <i class="material-icons" style="color: green;">done</i>
+                                    {% else %}
+                                    <i class="material-icons" style="color: red;">account_balance</i>
+                                    {% endif %}
+                                    REPRESENTANTE LEGAL
+                                </a>
+                            </li>
+                            <li role="presentation" class="{% if tab_active == 'Indicated'%}active{% endif %}">
+                                <a href="{{ url_indicated }}" >
+                                    {% if task_ind %}
+                                    <i class="material-icons" style="color: green;">done</i>
+                                    {% else %}
+                                    <i class="material-icons" style="color: red;">face</i>
+                                    {% endif %}
+                                    INDICADO
+                                </a>
+                            </li>
+                            <li role="presentation" class="{% if tab_active == 'LocalClass'%}active{% endif %}">
+                                <a href="{{ url_localclass }}" >
+                                    {% if task_loc %}
+                                    <i class="material-icons" style="color: green;">done</i>
+                                    {% else %}
+                                    <i class="material-icons" style="color: red;">border_color</i>
+                                    {% endif %}
+                                    LOCAL DO CURSO
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane animated zoomIn active">
+                                {% block contente_tab_form %}{% endblock contente_tab_form %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Tabs With Custom Animations -->
+
+
+<!-- Large Size -->
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center" id="largeModalLabel">Documentos</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{% static "media/" %}{{ documento.documento }}" target="_blank">Clique para visualizar
+                            aqui em outra pagina</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <iframe src="{% static "media/" %}{{ documento.documento }}"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">SAIR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
+
+{% block js_specific_page %}
+    <!-- Bootstrap Colorpicker Js -->
+    <script src="{% static "plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" %}"></script>
+    <!-- Dropzone Plugin Js -->
+    <script src="{% static "plugins/dropzone/dropzone.js" %}"></script>
+    <!-- Input Mask Plugin Js -->
+    <script src="{% static "plugins/jquery-inputmask/jquery.inputmask.bundle.js" %}"></script>
+    <!-- Multi Select Plugin Js -->
+    <script src="{% static "plugins/multi-select/js/jquery.multi-select.js" %}"></script>
+    <!-- Jquery Spinner Plugin Js -->
+    <script src="{% static "plugins/jquery-spinner/js/jquery.spinner.js" %}"></script>
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js" %}"></script>
+    <!-- noUISlider Plugin Js -->
+    <script src="{% static "plugins/nouislider/nouislider.js" %}"></script>
+{% endblock js_specific_page %}
+
+{% block js_custom %}
+    <!-- Custom Js -->
+{#    <script src="{% static "js/pages/forms/advanced-form-elements.js" %}"></script>#}
+    <script src="{% static "js/pages/ui/modals.js" %}"></script>
+    <script src="{% static "js/chapeudepalha/jquery.maskMoney.js" %}"></script>
+    <script src="{% static "js/chapeudepalha/cadastro/informacoes-participante.js" %}"></script>
+
+{% endblock js_custom %}
+
+{% block js_additional %}
+    <script>
+        activeItemMenu('participante-cadastro')
+    </script>
+{% endblock js_additional %}

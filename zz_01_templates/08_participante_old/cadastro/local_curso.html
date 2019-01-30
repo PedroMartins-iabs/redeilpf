@@ -1,0 +1,47 @@
+{% extends "03_participante/base/cadastro_form_base.html" %}
+{% load static %}
+
+{% block contente_tab_form %}
+    <div class="row clearfix">
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            <div class="col-md-12">
+                <h2>LOCAIS DE CURSO:</h2>
+            </div>
+            <div class="col-md-10">
+                <select class="form-control selectpicker" data-live-search="true" name="new_neighborhood" required>
+                    <option value="">Digite o codigo ou nome do bairro</option>
+                    {% for neighborhood in all_neighborhoods %}
+                        <option value="{{ neighborhood.pk }}"> {{ neighborhood.nome}} - {{ neighborhood.localidade.cidade.nome }} </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-success waves-effect btn-block" name="add_neighborhood" value="Adicionar Bairro" id="id_add_neighborhood_btn" />
+            </div>
+            <div class="col-md-12">
+                <h2>LOCAIS DE CURSO SELECIONADOS:</h2>
+            </div>
+            <div class="col-md-12">
+                <ul>
+                    {% for neighborhood in form_neighborhoods %}
+                        <li>
+                            {{ neighborhood.nome }} - {{ neighborhood.localidade.cidade.nome }}
+                            <a href="{% url 'local_curso_remove' formulario_pk neighborhood.id %}" >
+                                <span>Excluir</span>
+                            </a >
+                        </li>
+                        {% empty %}
+                        <li>Nenhum bairro selecionado</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </form>
+    </div>
+
+{% endblock contente_tab_form %}
+
+{% block js_custom %}
+    <!-- Custom Js -->
+    <script src="{% static 'js/chapeudepalha/bootstrap-select.min.js' %}"></script>
+{% endblock js_custom %}

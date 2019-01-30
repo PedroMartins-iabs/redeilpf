@@ -1,0 +1,117 @@
+{% extends "01_base/base.html" %}
+{% load static %}
+
+{% block title %}Advanced Form Elements{% endblock title %}
+
+{% block css_specific_page %}
+    <!-- Colorpicker Css -->
+    <link href="{% static "plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" %}" rel="stylesheet" />
+    <!-- Dropzone Css -->
+    <link href="{% static "plugins/dropzone/dropzone.css" %}" rel="stylesheet">
+    <!-- Multi Select Css -->
+    <link href="{% static "plugins/multi-select/css/multi-select.css" %}" rel="stylesheet">
+    <!-- Bootstrap Spinner Css -->
+    <link href="{% static "plugins/jquery-spinner/css/bootstrap-spinner.css" %}" rel="stylesheet">
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" %}" rel="stylesheet">
+    <!-- Bootstrap Select Css -->
+    <link href="{% static "plugins/bootstrap-select/css/bootstrap-select.css" %}" rel="stylesheet" />
+    <!-- noUISlider Css -->
+    <link href="{% static "plugins/nouislider/nouislider.min.css" %}" rel="stylesheet" />
+{% endblock css_specific_page %}
+
+{% block content %}
+
+
+<div class="block-header text-center">
+    <h2>FORMULARIO DE CADASTRO DO USUÁRIO</h2>
+</div>
+
+<!-- Tabs With Custom Animations -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+{#            <div class="header">#}
+{#                <h2>- - - HEAD DO FORMULÁRIO - - -</h2>#}
+{#            </div>#}
+            <div class="body">
+                <div class="row clearfix">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                            <li role="presentation" class="{% if tab_active == 'Information'%}active{% endif %}">
+                                <a href="{{ url_information }}" >
+                                    {% if task_inf %}
+                                    <i class="material-icons" style="color: green;">done</i>
+                                    {% else %}
+                                    <i class="material-icons" style="color: red;">account_box</i>
+                                    {% endif %}
+                                    INFORMAÇÕES PESSOAIS
+                                </a>
+                            </li>
+                            <li role="presentation" class="{% if tab_active == 'DadosBancarios'%}active{% endif %}">
+                                <a href="{{ url_dados_bancarios }}" >
+                                    {% if task_dados %}
+                                    <i class="material-icons" style="color: green;">done</i>
+                                    {% else %}
+                                    <i class="material-icons" style="color: red;">account_balance</i>
+                                    {% endif %}
+                                    DADOS BANCÁRIOS
+                                </a>
+                            </li>
+                        </ul>
+
+                        {% if button_finalize %}
+                            <a href="/usuario" class="btn_finalizar">
+                                <button class="btn btn-primary col-sm-4" style="float: right; margin-top: -35px" >
+                                    FINALIZAR CADASTRO DO USUÁRIO
+                                </button>
+                            </a>
+                        {% endif %}
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane animated zoomIn active">
+                                {% block contente_tab_form %}{% endblock contente_tab_form %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Tabs With Custom Animations -->
+
+
+
+
+
+{% endblock content %}
+
+{% block js_specific_page %}
+    <!-- Bootstrap Colorpicker Js -->
+    <script src="{% static "plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" %}"></script>
+    <!-- Dropzone Plugin Js -->
+    <script src="{% static "plugins/dropzone/dropzone.js" %}"></script>
+    <!-- Input Mask Plugin Js -->
+    <script src="{% static "plugins/jquery-inputmask/jquery.inputmask.bundle.js" %}"></script>
+    <!-- Multi Select Plugin Js -->
+    <script src="{% static "plugins/multi-select/js/jquery.multi-select.js" %}"></script>
+    <!-- Jquery Spinner Plugin Js -->
+    <script src="{% static "plugins/jquery-spinner/js/jquery.spinner.js" %}"></script>
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js" %}"></script>
+    <!-- noUISlider Plugin Js -->
+    <script src="{% static "plugins/nouislider/nouislider.js" %}"></script>
+{% endblock js_specific_page %}
+
+{% block js_custom %}
+    <!-- Custom Js -->
+    <script src="{% static "js/pages/forms/advanced-form-elements.js" %}"></script>
+{% endblock js_custom %}
+
+{% block js_additional %}
+    <script>
+        activeItemMenu('advanced-form-elements')
+    </script>
+{% endblock js_additional %}

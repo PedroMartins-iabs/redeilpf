@@ -1,0 +1,100 @@
+{% extends "01_base/base.html" %}
+{% load static %}
+
+{% block title %}Advanced Form Elements{% endblock title %}
+
+{% block css_specific_page %}
+    <!-- Colorpicker Css -->
+    <link href="{% static "plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" %}" rel="stylesheet" />
+    <!-- Dropzone Css -->
+    <link href="{% static "plugins/dropzone/dropzone.css" %}" rel="stylesheet">
+    <!-- Multi Select Css -->
+    <link href="{% static "plugins/multi-select/css/multi-select.css" %}" rel="stylesheet">
+    <!-- Bootstrap Spinner Css -->
+    <link href="{% static "plugins/jquery-spinner/css/bootstrap-spinner.css" %}" rel="stylesheet">
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" %}" rel="stylesheet">
+    <!-- Bootstrap Select Css -->
+    <link href="{% static "plugins/bootstrap-select/css/bootstrap-select.css" %}" rel="stylesheet" />
+    <!-- noUISlider Css -->
+    <link href="{% static "plugins/nouislider/nouislider.min.css" %}" rel="stylesheet" />
+{% endblock css_specific_page %}
+
+{% block content %}
+
+<div class="block-header">
+    <h2>TRIAGEM</h2>
+</div>
+
+<!-- Masked Input -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    INFORME O NIS DO PARTICIPANTE
+                    <small>Informe os dados para o sistema fazer as validacoes iniciais.</small>
+                </h2>
+            </div>
+            <div class="body">
+                <div class="demo-masked-input">
+                    <form id="sign_in" method="POST">
+                        {% csrf_token %}
+
+                        <div class="row clearfix">
+
+                            <div class="col-md-6">
+                                <b>NIS</b>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">credit_card</i>
+                                    </span>
+                                    <div class="form-line">{{ form.nis }}</div>
+                                    <strong style="color: red;">{{ form.errors.nis }}</strong>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-md-offset-8 col-md-4">
+                                <button type="submit" class="btn btn-warning waves-effect btn-block">ENVIAR</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Masked Input -->
+
+{% endblock content %}
+
+{% block js_specific_page %}
+    <!-- Bootstrap Colorpicker Js -->
+    <script src="{% static "plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" %}"></script>
+    <!-- Dropzone Plugin Js -->
+    <script src="{% static "plugins/dropzone/dropzone.js" %}"></script>
+    <!-- Input Mask Plugin Js -->
+    <script src="{% static "plugins/jquery-inputmask/jquery.inputmask.bundle.js" %}"></script>
+    <!-- Multi Select Plugin Js -->
+    <script src="{% static "plugins/multi-select/js/jquery.multi-select.js" %}"></script>
+    <!-- Jquery Spinner Plugin Js -->
+    <script src="{% static "plugins/jquery-spinner/js/jquery.spinner.js" %}"></script>
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js" %}"></script>
+    <!-- noUISlider Plugin Js -->
+    <script src="{% static "plugins/nouislider/nouislider.js" %}"></script>
+{% endblock js_specific_page %}
+
+{% block js_custom %}
+    <!-- Custom Js -->
+    <script src="{% static "js/pages/forms/advanced-form-elements.js" %}"></script>
+{% endblock js_custom %}
+
+{% block js_additional %}
+    <script>
+        activeItemMenu('participante-triagem')
+    </script>
+{% endblock js_additional %}
