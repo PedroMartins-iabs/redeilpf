@@ -84,14 +84,27 @@ WSGI_APPLICATION = 'redeilpf.wsgi.application'
 #     }
 # }
 
+# HEROKU IABS
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'dlqbi77r2l1vu',
+#         'HOST': 'ec2-107-20-185-27.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#         'USER': 'ebtdsndjycvrvw',
+#         'PASSWORD': '74e218abb2c836295647778f1076b375f31114ff574bc0b37580031dd0f77b12'
+#     }
+# }
+
+# HEROKU PEDRO
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dlqbi77r2l1vu',
-        'HOST': 'ec2-107-20-185-27.compute-1.amazonaws.com',
+        'NAME': 'd7cqv06ssong17',
+        'HOST': 'ec2-54-83-50-174.compute-1.amazonaws.com',
         'PORT': '5432',
-        'USER': 'ebtdsndjycvrvw',
-        'PASSWORD': '74e218abb2c836295647778f1076b375f31114ff574bc0b37580031dd0f77b12'
+        'USER': 'asiicjeoivbncs',
+        'PASSWORD': '347a247e8d99132346614e0bc3c8fbb051c419ebefe9a40eadea2078f5b559e0'
     }
 }
 
